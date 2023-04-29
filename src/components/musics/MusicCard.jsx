@@ -10,17 +10,24 @@ import { faForwardStep,
       } from '@fortawesome/free-solid-svg-icons'
 
 const MusicCard = () => {
-  const{musics, isPlaying} = StateContextCustom(state => state)
-  console.log(musics);
+  const{musics, isPlaying, setIsPlaying} = StateContextCustom(state => state)
   const audioElement = useRef(null);
 
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     audioElement.current.play();
-  //   } else {
-  //     audioElement.current.pause();
-  //   }
-  // });
+  useEffect(() => {
+    playPause();
+
+  }, []);
+
+  const playPause = () => { 
+    if (isPlaying == false) {
+      setIsPlaying(true);
+      audioElement.current.play();
+    } else {
+      audioElement.current.pause();
+      setIsPlaying(false);
+      console.log(audioElement.current);
+    }
+  }
 
   const skipSong = (forwards = true) => {
     if (forwards) {
@@ -47,6 +54,7 @@ const MusicCard = () => {
       });
     }
   };
+  
 
   return (
     <>
@@ -64,8 +72,8 @@ const MusicCard = () => {
             <h5 className=' font-bold'>{music.title}</h5>
             <p className='text-sm font-semibold text-zinc-500'>{music.artist}</p>
           </div>
-          <div>
-            <hr />
+          <div >
+          <audio ref={audioElement} controls preload="none" src={music.src} />
           </div>
 
           {/* MusicControl */}
@@ -86,7 +94,7 @@ const MusicCard = () => {
 
               <button className="bg-white font-normal h-8 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block border-4 border-double border-orange-800" 
                 style={{boxShadow:"1px 1px 5px blue, 1px 1px 8px red"}}
-                type="button">
+                type="button" onClick={playPause}> 
                   <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
               </button>
 
@@ -95,6 +103,7 @@ const MusicCard = () => {
                 type="button" onClick={() => skipSong()}>
                   <FontAwesomeIcon icon={faForwardStep} />
               </button>
+
               <button className="bg-white font-normal h-8 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block border-4 border-double border-orange-800" 
                 style={{boxShadow:"1px 1px 5px blue, 1px 1px 8px red"}}
                 type="button">

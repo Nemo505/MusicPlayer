@@ -4,7 +4,7 @@ const StateContext = createContext();
 
 export const StateContextProvider = ({children}) => {
 
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying] = useState(true);
     const [musics, setMusics] = useState([
         {
             "id": 1,
