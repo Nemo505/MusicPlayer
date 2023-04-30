@@ -27,7 +27,10 @@ export const StateContextProvider = ({children}) => {
             "src": "../../src/assets/music/cupidTwin.mp3"
         }
     ])
-    const data = {musics, setMusics, isPlaying, setIsPlaying}
+    const [currentSong,setCurrentSong] = useState(musics[0]);
+    const [nextSong,setNextSong] = useState(currentSong + 1);
+
+    const data = {musics, setMusics, isPlaying, setIsPlaying, currentSong,setCurrentSong, nextSong,setNextSong}
     return (
         <StateContext.Provider value={data}>
             {children}

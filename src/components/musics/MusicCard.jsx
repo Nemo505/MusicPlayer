@@ -9,14 +9,22 @@ import { faForwardStep,
         faPause
       } from '@fortawesome/free-solid-svg-icons'
 
+
 const MusicCard = () => {
-  const{musics, isPlaying, setIsPlaying} = StateContextCustom(state => state)
+
+  const{musics, isPlaying, setIsPlaying, 
+        currentSong,setCurrentSong, 
+        nextSong,setNextSong
+      } = StateContextCustom(state => state)
+
   const audioElement = useRef(null);
+
+  console.log(currentSong);
 
   useEffect(() => {
     playPause();
-
   }, []);
+
 
   const playPause = () => { 
     if (isPlaying == false) {
@@ -29,51 +37,41 @@ const MusicCard = () => {
     }
   }
 
-  const skipSong = (forwards = true) => {
-    if (forwards) {
-      setCurrentSongIndex(() => {
-        let temp = currentSongIndex;
-        temp++;
-
-        if (temp > songs.length - 1) {
-          temp = 0;
-        }
-
-        return temp;
-      });
+  const skipBack = () => {
+    const musicsIndex = musics.findIndex(x => x.id == currentSong.id);
+    if (musicsIndex == 0) {
+      setCurrentSong(musics[musics.length - 1]);       
     } else {
-      props.setCurrentSongIndex(() => {
-        let temp = props.currentSongIndex;
-        temp--;
+      setCurrentSong(musics[musicsIndex - 1]);
+    }
+  };
 
-        if (temp < 0) {
-          temp = props.songs.length - 1;
-        }
-
-        return temp;
-      });
+  const skipForward = () => {
+    const musicsIndex = musics.findIndex(x => x.id == currentSong.id);
+    if (musicsIndex == musics.length - 1) {
+      setCurrentSong(musics[0]);       
+    } else {
+      setCurrentSong(musics[musicsIndex + 1]);
     }
   };
   
 
   return (
     <>
-    {musics.map(music => {
-      return (
 
-        <div className="card " key={music.id} style={{width: "18rem",  backgroundColor: "pink", borderRadius:"18%", boxShadow:"8px 13px 7px gray, -1px -1px 9px white", border:"none"}}>
+        <div className="card " key={currentSong.id} style={{width: "18rem",  backgroundColor: "pink", borderRadius:"18%", boxShadow:"8px 13px 7px gray, -1px -1px 9px white", border:"none"}}>
 
           <div className='px-14 pt-14 pb-4'>
-            <img src={music.img_src} className="card-img-top " 
+            <img src={currentSong.img_src} className="card-img-top " 
             style={{boxShadow:"2px 4px 3px 4px rgba(0, 0, 0, 0.2)", borderRadius:"12%",border:"10px solid lightpink", height: "10rem"}} alt="..."/>
           </div> 
 
           <div className='text-center'>
-            <h5 className=' font-bold'>{music.title}</h5>
-            <p className='text-sm font-semibold text-zinc-500'>{music.artist}</p>
+            <h5 className=' font-bold'>{currentSong.title}</h5>
+            <p className='text-sm font-semibold text-zinc-500'>{currentSong.artist}</p>
           </div>
           <div >
-          <audio ref={audioElement} preload="none" src={music.src} />
+          <audio ref={audioElement} preload="none" src={currentSong.src} />
           </div>
 
           {/* MusicControl */}
@@ -88,7 +86,7 @@ const MusicCard = () => {
               
               <button className="bg-white font-normal h-8 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block border-4 border-double border-orange-800" 
                 style={{boxShadow:"1px 1px 5px blue, 1px 1px 8px red"}}
-                type="button" onClick={() => skipSong(false)}>
+                type="button" onClick={() => skipBack()}>
                   <FontAwesomeIcon icon={faBackwardStep} />
               </button>
 
@@ -100,7 +98,7 @@ const MusicCard = () => {
 
               <button className="bg-white font-normal h-8 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block border-4 border-double border-orange-800" 
                 style={{boxShadow:"1px 1px 5px blue, 1px 1px 8px red"}}
-                type="button" onClick={() => skipSong()}>
+                type="button" onClick={() => skipForward()}>
                   <FontAwesomeIcon icon={faForwardStep} />
               </button>
 
@@ -113,9 +111,7 @@ const MusicCard = () => {
             </div>
           </div>
         </div>
-      )
-      })
-    }
+     
     </>
    
   )
