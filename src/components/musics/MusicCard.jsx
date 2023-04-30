@@ -73,7 +73,7 @@ const MusicCard = () => {
             <p className='text-sm font-semibold text-zinc-500'>{music.artist}</p>
           </div>
           <div >
-          <audio ref={audioElement} controls preload="none" src={music.src} />
+          <audio ref={audioElement} preload="none" src={music.src} />
           </div>
 
           {/* MusicControl */}
