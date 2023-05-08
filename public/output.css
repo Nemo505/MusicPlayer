@@ -522,6 +522,14 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.fixed {
+  position: fixed;
+}
+
+.absolute {
+  position: absolute;
+}
+
 .mb-6 {
   margin-bottom: 1.5rem;
 }
@@ -638,6 +646,16 @@ video {
 .text-zinc-500 {
   --tw-text-opacity: 1;
   color: rgb(113 113 122 / var(--tw-text-opacity));
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .outline-none {
