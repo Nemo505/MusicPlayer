@@ -36,7 +36,11 @@ const MusicCard = ({ musics, isPlaying, setIsPlaying, currentSong, setCurrentSon
       
     } else {
       setCurrentSong(musics[musicsIndex - 1]);
-      setPrevSong(musics[0]);
+      if (currentSong.id == 2) {
+        setPrevSong(musics[currentSong.id]);
+      }else{
+        setPrevSong(musics[musicsIndex - 2]);
+      }
     }
   };
 

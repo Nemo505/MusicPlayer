@@ -11,13 +11,13 @@ const Home = () => {
   return (
     <>
       <div className='flex items-center justify-center bg-red-100 h-screen'>
-        <NextMusicCard currentSong={nextSong}/>
+        <NextMusicCard currentSong={prevSong}/>
 
           <MusicCard musics={musics} isPlaying={isPlaying} 
             setIsPlaying={setIsPlaying} currentSong={currentSong}
             setCurrentSong={setCurrentSong } setNextSong={setNextSong} setPrevSong={setPrevSong}
           />
-        <NextMusicCard currentSong={prevSong}/>
+        <NextMusicCard currentSong={nextSong}/>
       </div>
     </>
   )

@@ -25,6 +25,16 @@ export const StateContextProvider = ({children}) => {
             "year": "2023",
             "img_src": "../../src/assets/image/trackTwo.jpg",
             "src": "../../src/assets/music/cupidTwin.mp3"
+        },
+        {
+            "id": 3,
+            "title": "Sour Grapes",
+            "artist": "le sserafim",
+            "album": " Promise",
+            "track": "Sour Grapes",
+            "year": "2023",
+            "img_src": "../../src/assets/image/trackThree.jpg",
+            "src": "../../src/assets/music/sourGrapes.mp3"
         }
     ])
     const [currentSong, setCurrentSong] = useState(musics[0]);
