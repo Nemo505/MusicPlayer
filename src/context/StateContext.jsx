@@ -13,8 +13,8 @@ export const StateContextProvider = ({children}) => {
             "album": " Cupido",
             "track": "Cupid",
             "year": "2023",
-            "img_src": "../assets/image/trackOne.jpg",
-            "src": "../assets/music/pastLives.mp3"
+            "img_src": "/assets/image/trackOne.jpg",
+            "src": "/assets/music/pastLives.mp3"
         },
         {
             "id": 2,
@@ -23,8 +23,8 @@ export const StateContextProvider = ({children}) => {
             "album": " Promise",
             "track": "Past Lives",
             "year": "2023",
-            "img_src": "../assets/image/trackTwo.jpg",
-            "src": "../assets/music/cupidTwin.mp3"
+            "img_src": "/assets/image/trackTwo.jpg",
+            "src": "/assets/music/cupidTwin.mp3"
         },
         {
             "id": 3,
@@ -33,8 +33,8 @@ export const StateContextProvider = ({children}) => {
             "album": " Promise",
             "track": "Sour Grapes",
             "year": "2023",
-            "img_src": "../assets/image/trackThree.jpg",
-            "src": "../assets/music/sourGrapes.mp3"
+            "img_src": "/assets/image/trackThree.jpg",
+            "src": "/assets/music/sourGrapes.mp3"
         }
     ])
     const [currentSong, setCurrentSong] = useState(musics[0]);
