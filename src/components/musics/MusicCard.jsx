@@ -33,13 +33,21 @@ const MusicCard = ({ musics, isPlaying, setIsPlaying, currentSong, setCurrentSon
     if (musicsIndex == 0) {
       setCurrentSong(musics[musics.length - 1]);
       setPrevSong(musics[musics.length - 2]);
+      setNextSong(musics[0]);
       
     } else {
+  
       setCurrentSong(musics[musicsIndex - 1]);
       if (currentSong.id == 2) {
         setPrevSong(musics[currentSong.id]);
+        if (currentSong.id == 1) {
+          setNextSong(musics[musicsIndex - 2])
+        }else{
+          setNextSong(musics[musicsIndex])
+        }
       }else{
         setPrevSong(musics[musicsIndex - 2]);
+        setNextSong(musics[musicsIndex])
       }
     }
   };
@@ -56,7 +64,12 @@ const MusicCard = ({ musics, isPlaying, setIsPlaying, currentSong, setCurrentSon
 
   return (
     <>
-          <div className="card " key={currentSong.id} style={{width: "18rem",  backgroundColor: "pink", borderRadius:"18%", boxShadow:"8px 13px 7px gray, -1px -1px 9px white", border:"none"}}>
+          <div className="card " key={currentSong.id} 
+          style={{width: "18rem", 
+           backgroundColor: "pink", 
+           borderRadius:"18%", 
+           boxShadow:"-1px -1px 9px lightblue, 0px 30px 40px -25px rgba(0, 0, 0, 1)", 
+           border:"none"}}>
 
             <div className='px-14 pt-14 pb-4'>
               <img src={currentSong.img_src} className="card-img-top " 
@@ -68,7 +81,7 @@ const MusicCard = ({ musics, isPlaying, setIsPlaying, currentSong, setCurrentSon
               <p className='text-sm font-semibold text-zinc-500'>{currentSong.artist}</p>
             </div>
             <div >
-            <audio ref={audioElement} preload="none" src={currentSong.src} />
+              <audio ref={audioElement} preload="none" src={currentSong.src} />
             </div>
 
             {/* MusicControl */}

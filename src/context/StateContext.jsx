@@ -41,7 +41,7 @@ export const StateContextProvider = ({children}) => {
     const [nextSong,setNextSong] = useState(currentSong.id == musics.length - 1 ? musics[1] :musics[currentSong.id]);
     const [prevSong,setPrevSong] = useState(currentSong.id == 1 ? musics[musics.length - 1] : musics[currentSong.id - 2]);
 
-    console.log(prevSong, currentSong);
+    console.log(prevSong, currentSong, nextSong);
     const data = {musics, setMusics, isPlaying, setIsPlaying, currentSong, setCurrentSong, nextSong, setNextSong, prevSong, setPrevSong};
 
     return (
