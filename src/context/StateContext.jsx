@@ -1,4 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import trackOne from "../assets/image/trackOne.jpg";
+import trackTwo from "../assets/image/trackTwo.jpg";
+import trackThree from "../assets/image/trackThree.jpg";
+
 
 const StateContext = createContext();
 
@@ -13,7 +17,7 @@ export const StateContextProvider = ({children}) => {
             "album": " Cupido",
             "track": "Cupid",
             "year": "2023",
-            "img_src": "/assets/image/trackOne.jpg",
+            "img_src": {trackOne},
             "src": "/assets/music/pastLives.mp3"
         },
         {
@@ -23,7 +27,7 @@ export const StateContextProvider = ({children}) => {
             "album": " Promise",
             "track": "Past Lives",
             "year": "2023",
-            "img_src": "/assets/image/trackTwo.jpg",
+            "img_src": {trackTwo},
             "src": "/assets/music/cupidTwin.mp3"
         },
         {
@@ -33,7 +37,7 @@ export const StateContextProvider = ({children}) => {
             "album": " Promise",
             "track": "Sour Grapes",
             "year": "2023",
-            "img_src": "/assets/image/trackThree.jpg",
+            "img_src": {trackThree},
             "src": "/assets/music/sourGrapes.mp3"
         }
     ])
