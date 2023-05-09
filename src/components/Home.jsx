@@ -15,7 +15,7 @@ const Home = () => {
   return (
 
       <div className='flex items-center justify-evenly bg-red-100 h-screen'>
-        <div className=' opacity-50 reflect' style={{display:'block'}} >
+        <div className=' opacity-50 reflect sm:hidden md:block'>
           <NextMusicCard currentSong={prevSong}/>
         </div>
 
@@ -26,7 +26,7 @@ const Home = () => {
               />
         </div>
 
-          <div className='opacity-50 reflect' style={{display:'block'}}>
+          <div className='opacity-50 reflect sm:hidden md:block' >
             <NextMusicCard currentSong={nextSong}/>
           </div>
       </div>
