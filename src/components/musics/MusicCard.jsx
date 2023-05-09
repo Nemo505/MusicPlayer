@@ -9,7 +9,10 @@ import { faForwardStep,
       } from '@fortawesome/free-solid-svg-icons'
 
 
-const MusicCard = ({ musics, isPlaying, setIsPlaying, currentSong, setCurrentSong, setNextSong, setPrevSong}) => {
+const MusicCard = ({ musics, isPlaying, 
+                    setIsPlaying, currentSong, 
+                    setCurrentSong, setNextSong, 
+                    setPrevSong}) => {
   const audioElement = useRef(null);
 
   useEffect(() => {
@@ -55,9 +58,18 @@ const MusicCard = ({ musics, isPlaying, setIsPlaying, currentSong, setCurrentSon
   const skipForward = () => {
     const musicsIndex = musics.findIndex(x => x.id == currentSong.id);
     if (musicsIndex == musics.length - 1) {
-      setCurrentSong(musics[0]);       
+      setCurrentSong(musics[0]); 
+      setPrevSong(musics[musics.length - 1]); 
+      setNextSong(musics[1]) 
+      console.log("he");    
     } else {
       setCurrentSong(musics[musicsIndex + 1]);
+      setPrevSong(musics[musicsIndex]);
+      if (musicsIndex == musics.length - 2) {
+        setNextSong(musics[0]);
+      }else{
+        setNextSong(musics[musicsIndex + 2]) 
+      }
     }
   };
   

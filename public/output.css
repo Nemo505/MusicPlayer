@@ -552,6 +552,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.block {
+  display: block;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -691,7 +695,7 @@ video {
 }
 
 .reflect {
-  -webkit-box-reflect: below 10px -webkit-gradient(linear, left top, left bottom, from(black), color-stop(60%, transparent), to(rgba(255, 255, 255, 0.1)));
+  -webkit-box-reflect: below 8px -webkit-gradient(linear, right top, right bottom, from(transparent), to(rgba(255, 255, 255, 0.4)));
 }
 
 .reflect::after{
@@ -708,3 +712,4 @@ video {
     margin-bottom: 0px;
   }
 }
+
